@@ -10,11 +10,11 @@ This repository does not contain any real data.
 
 Should you have any questions or spot a bug in the code, please send an email to marcus.buckmann@bankofengland.co.uk or raise an issue within the repository.
 
-# Structure of the code
+## Structure of the code
 
-The script _experiment.R_ shows how the model is used, the script _utils.R_ contains a few utility functions and the script _optimiser.R_ implements the mixed integer program. The _requirements.txt_ file lists the R package required to use the optimiser.
+The script _experiment.R_ shows how the model is used, the script _utils.R_ contains a few utility functions and the script _model.R_ implements the mixed integer program. The _requirements.txt_ file lists the R package required to use the optimiser.
 
 
-# Disclaimer
+## Disclaimer
 This package is an outcome of a research project. All errors are those of the authors. All views expressed are personal views, not those of the Bank of England.
 
