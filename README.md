@@ -2,7 +2,7 @@
 
 This repository includes the code used in the [Bank of England Staff Working Paper 905](http://www.bankofengland.co.uk/working-paper/2021/XXX) "__The more the merrier? Evidence from the global financial crisis on the value of multiple requirements in bank regulation__" by Marcus Buckmann, Paula Gallego Marquez, Mariana Gimpelewicz, Sujit Kapadia and Katie Rismanchi. 
 
-The paper assesses the vlaue of multiple requirements in bank regulation using a rule based methdology. An example of such as rule is the following: 
+The paper assesses the value of multiple requirements in bank regulation using a rule based methodology. An example of such as rule is the following: 
 IF __leverage ratio_ < 3% OR _capital ratio_ <8% THEN predict _failure_, otherwise predict _survival_. To calibrate these thresholded rules, we formulatae a mixed integer program which is shwon in Appendix A.1 of the paper. The code in this repository implements the mixed integer program in R.
 
 Should you have any questions or spot a bug in the code, please send an email to marcus.buckmann@bankofengland.co.uk or raise an issue within the repository.
@@ -11,11 +11,15 @@ Should you have any questions or spot a bug in the code, please send an email to
 # Prerequisites 
 The code has been developed and used under ```R``` 3.6.2 
 
-The ```R``` script _R_installer.R_ in the _setup_ folder installs all necessary ```R``` packages.
-The file _python_env.yml_ in the _setup_ folder specifies the Anaconda virtual environment in which the experiments were run.
+The script _requirements.R_ in the _setup_ folder installs all necessary ```R``` packages.
  
 
 # Structure of the code
+
+
+The script _experiment.R_ gives and example how the optimiser can be used, the script _utils.R_ contains a few utility functions and the script _optimiser.R_ implements the optimiser. 
+
+
 
 ## Estimating the prediction models
 The paper is based on two main empirical experiments: cross-validation and forecasting. These experiments are run using the respective ```Python``` scripts in the _experiments_ folder.
@@ -33,10 +37,6 @@ The _data[...].txt_ contains the dataset that is used in the experiment. This is
 - The files _se_fold[...].txt_ and _se_iter[...].txt_ show the standard errors of the respective performance results.
 
 
-## Analysing the results 
-The analyses of the files in the _results folder_ are conducted in ```R```. In the _analysis_ folder, the files _analysis_cross_validation.R_ and _analysis_forecasting.R_ produce charts and regression models for the two types of experiments. 
-
-The Excel sheet _visual_params.xlsx_ in the _analysis_ folder specifies visual characteristics of the plots. The user can alter the name, colour, and symbol of algorithms and variables shown in the charts.
 
 # Disclaimer
 This package is an outcome of a research project. All errors are those of the authors. All views expressed are personal views, not those of any employer.
