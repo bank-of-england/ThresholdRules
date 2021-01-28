@@ -13,5 +13,5 @@ The script _experiment.R_ shows how the model is used, the script _utils.R_ cont
 
 
 ## Disclaimer
-This package is an outcome of a research project. All errors are those of the authors. All views expressed are personal views, not those of the Bank of England.
+This repository is an outcome of a research project. All errors are those of the authors. All views expressed are personal views, not those of the Bank of England.
 
