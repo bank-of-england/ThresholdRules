@@ -45,7 +45,7 @@ optimiseRule <- function(data_input,
   n_constraints <- n_objects * n_features * 2 + 2 *n_objects + 3
   mat <- array(NA, dim = c(n_constraints, n_variables))
   rhs <- rep(NA, nrow(mat))
-  comp <- rep(NA, nrow(mat))
+  comp <- rep(NA, nrow(mat)) # "G" is >=, "L" is <=, and "E" is ==
   
   
   # Equations A.5 and A.5:
@@ -107,7 +107,7 @@ optimiseRule <- function(data_input,
   # Equation A.4
   temp <- rep(0, n_variables)
   temp[length(thresholds) + length(Z) + length(epsilon)  + 2] <- n_objects_neg 
-  temp[length(thresholds) + length(Z) + 1:length(epsilon)] <- 1- (class_label+1)/2
+  temp[length(thresholds) + length(Z) + 1:length(epsilon)] <- 1- (class_label + 1)/2
   mat[counter,] <- temp
   rhs[counter] <- n_objects_neg
   comp[counter] <- "E"
