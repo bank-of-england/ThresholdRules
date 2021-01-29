@@ -118,12 +118,11 @@ optimiseRule <- function(data_input,
   temp <- rep(0, n_variables)
   temp[length(thresholds) + length(Z) + length(epsilon) + 1] <- 1
   mat[counter,] <- temp
-  rhs[counter] <- n_objects_neg
+  rhs[counter] <- minimum_hit_rate
   comp[counter] <- "G"
   
-  mat[counter,] <- temp
-  rhs[counter] <- minimum_hit_rate
-  dir <- c(dir,"G")
+ 
+ 
   
   # Equaion A.1 (objective function)
   temp <- rep(0, n_variables)
