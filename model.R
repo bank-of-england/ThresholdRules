@@ -18,7 +18,7 @@ optimiseRule <- function(data_input,
   x <- as.matrix(data_input_normalised)[, -1, drop = F]
   n_objects <- nrow(x)
   n_features <-ncol(x)
-  class_label <- data_input_normalised[,1] * 2 - 1 # for convenience the class label is recoded from {0,1} to {-1,1}
+  class_label <- data_input_normalised[, 1] * 2 - 1 # for convenience the class label is recoded from {0,1} to {-1,1}
   n_objects_pos <- sum(class_label == 1)
   n_objects_neg <-n_objects - n_objects_pos
   
@@ -27,7 +27,7 @@ optimiseRule <- function(data_input,
   Z <- rep("B",n_objects * n_features) # indicating for each object whether test (eg. lr < 0.5) is true
   epsilon <- rep("B", n_objects) # vector indicating whether prediction is wrong
   metrics <- rep("C", 2) # hit rate, true negative rate (1 - false alarm rate)
-  all_variables <- c(thresholds, Z, epsilon, metrics) # hit, false
+  all_variables <- c(thresholds, Z, epsilon, metrics) 
   n_variables <- length(all_variables)# number of all variables
   
   # compute constants required for MIP formulation
@@ -55,7 +55,7 @@ optimiseRule <- function(data_input,
       
       temp <- rep(0, n_variables)
       temp[d] <- -1 
-      temp[length(thresholds) + n_objects * (d-1) + o] <- M # z indicator
+      temp[length(thresholds) + n_objects * (d-1) + o] <- M 
       mat[counter,] <- temp
       rhs[counter] <- -1 * (x[o,d])
       comp[counter] <- "G"
@@ -63,7 +63,7 @@ optimiseRule <- function(data_input,
       
       temp <- rep(0, n_variables)
       temp[d] <- -1 
-      temp[length(thresholds) + n_objects*(d-1) + o] <- M # z indicator
+      temp[length(thresholds) + n_objects*(d-1) + o] <- M 
       mat[counter,] <- temp
       rhs[counter] <-  M - 1*(x[o,d] + delta[d])
       comp[counter] <- "L"
@@ -125,14 +125,14 @@ optimiseRule <- function(data_input,
   rhs[counter] <- minimum_hit_rate
   dir <- c(dir,"G")
   
-  # objective function
+  # Equaion A.1 (objective function)
   temp <- rep(0, n_variables)
   temp[(n_variables - 1:0)] <- error_weights
   temp[1:length(thresholds)] <- -regularise_threshold
   objective_function <- temp
   
   
-  # set lower (lowb) and upper (upb) limits for variables
+  # set lower and upperlimits for variables
   lower_bounds <- rep(0, n_variables)
   upper_bounds <- rep(1, n_variables)
   
@@ -169,7 +169,7 @@ optimiseRule <- function(data_input,
   
   
   # extract thresholds from result 
-  thresholds_learned <- round(result[1:n_features],5)
+  thresholds_learned <- round(result[1:n_features], 5)
   
   index_max <- thresholds_learned > 1
   index_min <- thresholds_learned < 0
