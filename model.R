@@ -6,10 +6,10 @@ optimiseRule <- function(data_input,
                          regularise_threshold = 0.1) {
   #' Optimizses thresholded rule
   #' @param data_input data.frame. The first column is the outcome variable, the remaining columns are the metrics for which the thresholds are calibrated.
-  #' @param minimum_hit_rate Minimum hit rate that the model has to obtain across the input data.
-  #' @param solver Solver that is used to obtain a solution. Options are 'lpsolve'and 'glpk'.
-  #' @param error_weights Vector of length 2 that specifies how the model weights the hit rate and true negative rate. Default values are c(1, 100), i.e. the true negative rate has a 100 x higher weight than the hit rate.
-  #' @param regularise_threshold If > 0, higher thresholds are penalized. The higher the value the higher the penalty. The default value is small (0.1) to avoid that smaller threshold are traded for accuracy.
+  #' @param minimum_hit_rate float. Minimum hit rate that the model is constrained to achieve across the input data.
+  #' @param solver string. Solver that is used to obtain a solution. Options are 'lpsolve'and 'glpk'.
+  #' @param error_weights float vector of length 2. It specifies how the model weights the hit rate and true negative rate. Default values are c(1, 100), i.e. the true negative rate has a 100 x higher weight than the hit rate.
+  #' @param regularise_threshold float. If > 0, higher thresholds are penalized. The higher the value the higher the penalty. The default value is small (0.1) to avoid that smaller threshold are traded for accuracy.
   #' @return rule model
   
   data_input_normalised <- normalise(data_input) # normalise all variables to values between 0 and 1.
